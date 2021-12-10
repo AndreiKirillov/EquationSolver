@@ -1,6 +1,6 @@
 #include "Perceptron.h"
 // Конструктор
-Perceptron::Perceptron(int x, int y) : limit(100), sum(0), good_path(""), bad_path(""), size_x(x), size_y(y)
+Perceptron::Perceptron(int x, int y) : sum(0), good_path(""), bad_path(""), filepath(), size_x(x), size_y(y)
 {
 	inputs.resize(size_y);                // Задаём размеры всем матрицам
 	weight_matrix.resize(size_y);
@@ -53,7 +53,7 @@ void Perceptron::CalculateSignals()      // Подсчёт сигналов
 
 bool Perceptron::GetResult()        // Возвращает результат обучения
 {
-	return sum > limit;
+	return sum > LIMIT;
 }
 
 void Perceptron::DisplayInputs()    // Красивый вывод изображения в консоль
@@ -87,6 +87,27 @@ void Perceptron::TeachingStep(bool perceptron_deсision)   // Корректировка весов
 
 void Perceptron::TeachPerceptron(int teaching_value)   // Обучение персептрона
 {
+	filepath.SetFilePaths(teaching_value);
+	vector<string> good_files = filepath.GetGoodFiles();
+	vector<string> bad_files = filepath.GetBadFiles();
+
+	if (good_files.size() == 0  || bad_files.size() == 0)
+		return;
+	for_each(good_files.begin(), good_files.end(), [&](string& file)
+		{
+			SetInputsFromFile(file);    //Получаем входные данные
+			CalculateSignals();                  //Расчитываем сигналы
+			if (!GetResult())
+				TeachingStep(false);      // Корректируем веса, если нужно
+		});
+
+	for_each(bad_files.begin(), bad_files.end(), [&](string& file)
+		{
+			SetInputsFromFile(file);    //Получаем входные данные
+			CalculateSignals();                  //Расчитываем сигналы
+			if (!GetResult())
+				TeachingStep(true);       // Корректируем веса, если нужно
+		});
 	switch (teaching_value)
 	{
 	case 5:

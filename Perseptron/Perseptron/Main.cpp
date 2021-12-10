@@ -1,6 +1,6 @@
-﻿
-#include <iostream>
-#include <chrono>
+﻿#pragma once
+
+#include "Framework.h"
 #include "Perceptron.h"
 
 using namespace std;

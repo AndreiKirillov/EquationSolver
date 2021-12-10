@@ -1,9 +1,6 @@
 #pragma once
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <vector>
-#include <algorithm>
+#include "Framework.h"
+#include "Filepath.h"
 
 using namespace std;
 
@@ -13,14 +10,19 @@ private:
 	vector<vector<int>> inputs;
 	vector<vector<int>> weight_matrix;
 	vector<vector<int>> signal_matrix;
-	int limit;
+
+	static const int LIMIT = 100;
 	double sum;
+
+	Filepath filepath;
 	string good_path;
 	string bad_path;
+
 	int size_x;
 	int size_y;
 public:
 	Perceptron(int x, int y);
+
 	void SetInputsFromFile(const string& filename);
 	void CalculateSignals();
 	bool GetResult();

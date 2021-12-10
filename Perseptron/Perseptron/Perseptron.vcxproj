@@ -148,10 +148,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Filepath.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Perceptron.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Filepath.h" />
+    <ClInclude Include="Framework.h" />
     <ClInclude Include="Perceptron.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
