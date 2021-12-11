@@ -9,7 +9,7 @@
 class Filepath
 {
 private:
-	std::string folder;
+	std::string folder = "Symbols/";
 	std::string good;
 	std::string bad;
 

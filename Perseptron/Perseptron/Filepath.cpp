@@ -7,12 +7,12 @@ void Filepath::LoadFiles()
 		for (int i = 1; i <= 45; i++)
 		{
 			good_files.push_back(good + std::to_string(i) + ".txt");
-			good_files.push_back(bad + std::to_string(i) + ".txt");
+			bad_files.push_back(bad + std::to_string(i) + ".txt");
 		}
 	}
 }
 
-Filepath::Filepath(): folder("Symbols"), good(""), bad(""), good_files(0), bad_files(0)
+Filepath::Filepath(): folder("Symbols/"), good(""), bad(""), good_files(0), bad_files(0)
 {
 }
 

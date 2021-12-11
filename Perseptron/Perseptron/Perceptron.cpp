@@ -1,6 +1,7 @@
 #include "Perceptron.h"
 // Конструктор
-Perceptron::Perceptron(int x, int y) : sum(0), good_path(""), bad_path(""), filepath(), size_x(x), size_y(y)
+Perceptron::Perceptron(int x, int y) : sum(0), is_teached(false),
+filepath(), size_x(x), size_y(y)
 {
 	inputs.resize(size_y);                // Задаём размеры всем матрицам
 	weight_matrix.resize(size_y);
@@ -87,63 +88,40 @@ void Perceptron::TeachingStep(bool perceptron_deсision)   // Корректировка весов
 
 void Perceptron::TeachPerceptron(int teaching_value)   // Обучение персептрона
 {
-	filepath.SetFilePaths(teaching_value);
+	if (is_teached)
+		return;
+
+	filepath.SetFilePaths(teaching_value);                // Задаём расположение нужного символа
 	vector<string> good_files = filepath.GetGoodFiles();
 	vector<string> bad_files = filepath.GetBadFiles();
 
 	if (good_files.size() == 0  || bad_files.size() == 0)
 		return;
-	for_each(good_files.begin(), good_files.end(), [&](string& file)
+	for (int k = 0; k < 100; k++)
+	{
+		for (auto& file : good_files)
 		{
 			SetInputsFromFile(file);    //Получаем входные данные
 			CalculateSignals();                  //Расчитываем сигналы
 			if (!GetResult())
 				TeachingStep(false);      // Корректируем веса, если нужно
-		});
-
-	for_each(bad_files.begin(), bad_files.end(), [&](string& file)
+		}
+		for (auto& file : bad_files)
 		{
 			SetInputsFromFile(file);    //Получаем входные данные
 			CalculateSignals();                  //Расчитываем сигналы
-			if (!GetResult())
-				TeachingStep(true);       // Корректируем веса, если нужно
-		});
-	switch (teaching_value)
-	{
-	case 5:
-	{
-		good_path = "Good/";
-		bad_path = "Bad/";
-	}
-	break;
-	}
-	// Прогоняем хорошие файлы
-	for (int k = 0; k < 100; k++)
-	{
-		for (int i = 1; i <= 45; i++)
-		{
-			string good_filename = good_path + to_string(i) + ".txt";
-			SetInputsFromFile(good_filename);    //Получаем входные данные
-			CalculateSignals();                  //Расчитываем сигналы
-			if (!GetResult())
-				TeachingStep(false);             // Корректируем веса, если нужно
-		}
-		// Прогоняем плохие файлы
-		for (int i = 1; i <= 45; i++)
-		{
-			string filename = bad_path + to_string(i) + ".txt";
-			SetInputsFromFile(filename);
-			CalculateSignals();
 			if (GetResult())
-				TeachingStep(true);
+				TeachingStep(true);      // Корректируем веса, если нужно
 		}
 	}
 	SavePerceptron();      // Сохраняем матрицу весов в файл
+
+	is_teached = true;
 }
 
 void Perceptron::SavePerceptron()        // Сохраняем полученную в ходе обучения
 {                                    // матрицу весов в файл
-	ofstream outf("Results/Save.txt");
+	ofstream outf("Symbols/5/Result/Save.txt");
 	if (outf.good())
 	{
 		for (auto& elem_i : weight_matrix)

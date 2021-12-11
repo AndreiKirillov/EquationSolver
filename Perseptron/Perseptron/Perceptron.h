@@ -13,10 +13,11 @@ private:
 
 	static const int LIMIT = 100;
 	double sum;
+	bool is_teached;
 
 	Filepath filepath;
-	string good_path;
-	string bad_path;
+	//string good_path;
+	//string bad_path;
 
 	int size_x;
 	int size_y;
@@ -30,6 +31,7 @@ public:
 	void TeachingStep(bool perceptron_deñision);
 	void TeachPerceptron(int teaching_value);
 	void SavePerceptron();
+	
 	//void DownloadPerceptron(const string& filename);
 };
 
