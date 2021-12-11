@@ -1,6 +1,6 @@
 #include "Perceptron.h"
 // Конструктор
-Perceptron::Perceptron(int x, int y) : sum(0), is_teached(false),
+Perceptron::Perceptron(int x, int y) :identifying_symbol(), sum(0), is_teached(false),
 filepath(), size_x(x), size_y(y)
 {
 	inputs.resize(size_y);                // Задаём размеры всем матрицам

@@ -150,12 +150,16 @@
   <ItemGroup>
     <ClCompile Include="Filepath.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Network.cpp" />
     <ClCompile Include="Perceptron.cpp" />
+    <ClCompile Include="Symbol.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Filepath.h" />
     <ClInclude Include="Framework.h" />
+    <ClInclude Include="Network.h" />
     <ClInclude Include="Perceptron.h" />
+    <ClInclude Include="Symbol.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

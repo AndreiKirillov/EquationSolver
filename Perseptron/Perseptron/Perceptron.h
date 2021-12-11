@@ -1,12 +1,15 @@
 #pragma once
 #include "Framework.h"
 #include "Filepath.h"
+#include "Symbol.h"
 
 using namespace std;
 
 class Perceptron
 {
 private:
+	Symbol identifying_symbol;
+
 	vector<vector<int>> inputs;
 	vector<vector<int>> weight_matrix;
 	vector<vector<int>> signal_matrix;
