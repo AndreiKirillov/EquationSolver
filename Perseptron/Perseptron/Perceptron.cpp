@@ -1,4 +1,19 @@
 #include "Perceptron.h"
+
+Perceptron::Perceptron():identifying_symbol(), sum(0), is_teached(false),
+filepath(), size_x(0), size_y(0)
+{
+	inputs.resize(size_y);                // Задаём размеры всем матрицам
+	weight_matrix.resize(size_y);
+	signal_matrix.resize(size_y);
+	for (int i = 0; i < 12; i++)
+	{
+		inputs[i].resize(size_x);
+		weight_matrix[i].resize(size_x);
+		signal_matrix[i].resize(size_x);
+	}
+}
+
 // Конструктор
 Perceptron::Perceptron(int x, int y) :identifying_symbol(), sum(0), is_teached(false),
 filepath(), size_x(x), size_y(y)
@@ -12,6 +27,27 @@ filepath(), size_x(x), size_y(y)
 		weight_matrix[i].resize(size_x);
 		signal_matrix[i].resize(size_x);
 	}
+}
+
+Perceptron::Perceptron(Symbol& symbol, int x, int y) :  identifying_symbol(symbol) ,sum(0), is_teached(false),
+filepath(), size_x(x), size_y(y)
+{
+	inputs.resize(size_y);                // Задаём размеры всем матрицам
+	weight_matrix.resize(size_y);
+	signal_matrix.resize(size_y);
+	for (int i = 0; i < 12; i++)
+	{
+		inputs[i].resize(size_x);
+		weight_matrix[i].resize(size_x);
+		signal_matrix[i].resize(size_x);
+	}
+}
+
+void Perceptron::SetParams(const Symbol& s, int x, int y)
+{
+	identifying_symbol = s;
+	size_x = x;
+	size_y = y;
 }
 
 void Perceptron::SetInputsFromFile(const string& filename)  // Заполнение матрицы входных данных из файла
@@ -86,12 +122,12 @@ void Perceptron::TeachingStep(bool perceptron_deсision)   // Корректировка весов
 	}
 }
 
-void Perceptron::TeachPerceptron(int teaching_value)   // Обучение персептрона
+void Perceptron::TeachPerceptron()   // Обучение персептрона
 {
 	if (is_teached)
 		return;
 
-	filepath.SetFilePaths(teaching_value);                // Задаём расположение нужного символа
+	filepath.SetFilePaths(identifying_symbol.id);                // Задаём расположение нужного символа
 	vector<string> good_files = filepath.GetGoodFiles();
 	vector<string> bad_files = filepath.GetBadFiles();
 

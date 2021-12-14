@@ -3,6 +3,7 @@
 #include "Filepath.h"
 #include "Symbol.h"
 
+
 using namespace std;
 
 class Perceptron
@@ -25,16 +26,19 @@ private:
 	int size_x;
 	int size_y;
 public:
+	Perceptron();
 	Perceptron(int x, int y);
+	Perceptron(Symbol& s, int x, int y);
 
+	void SetParams(const Symbol& s, int x, int y);
 	void SetInputsFromFile(const string& filename);
 	void CalculateSignals();
 	bool GetResult();
 	void DisplayInputs();
 	void TeachingStep(bool perceptron_deñision);
-	void TeachPerceptron(int teaching_value);
+	void TeachPerceptron();
 	void SavePerceptron();
+	
 	
 	//void DownloadPerceptron(const string& filename);
 };
-
