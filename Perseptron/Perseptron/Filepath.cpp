@@ -16,6 +16,11 @@ Filepath::Filepath(): folder("Symbols/"), good(""), bad(""), good_files(0), bad_
 {
 }
 
+std::string Filepath::GetFolder()
+{
+	return folder;
+}
+
 void Filepath::SetFilePaths(int id)
 {
 	switch (id)

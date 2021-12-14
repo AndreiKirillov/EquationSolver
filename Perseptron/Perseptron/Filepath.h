@@ -21,6 +21,7 @@ public:
 // конструктор
 	Filepath();
 
+	std::string GetFolder();
 	void SetFilePaths(int id);
 	bool IsEmpty();
 

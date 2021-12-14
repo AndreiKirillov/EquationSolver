@@ -28,7 +28,7 @@ private:
 public:
 	Perceptron();
 	Perceptron(int x, int y);
-	Perceptron(Symbol& s, int x, int y);
+	Perceptron(const Symbol& s, int x, int y);
 
 	void SetParams(const Symbol& s, int x, int y);
 	void SetInputsFromFile(const string& filename);

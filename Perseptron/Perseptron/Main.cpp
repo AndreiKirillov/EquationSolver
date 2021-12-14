@@ -48,44 +48,55 @@ void TestPerceptron(Perceptron& p)     // Функция тестировани�
 
 int main()
 {
-	//setlocale(LC_ALL, "Russian");
-	//cout << "\tМеню программы" << endl << endl;
-	//cout << "1 - Обучить нейронную сеть" << endl
-	//	<< "2 - Проверить" << endl
-	//	//<< "3 - Загрузить обученный персептрон" << endl
-	//	<< "0 - Выход" << endl;
-	//int what_to_do;
-	//Symbol s(5, "5");
-	//Perceptron p(s, 6, 12);
-	//while (1)
-	//{
-	//	cin >> what_to_do;
-	//	switch (what_to_do)
-	//	{
-	//	case 1:
-	//	{
-	//		auto begin = chrono::steady_clock::now();  // Замеряем время обучения
-	//		p.TeachPerceptron();
-	//		auto end = chrono::steady_clock::now();
+	setlocale(LC_ALL, "Russian");
+	cout << "\tМеню программы" << endl << endl;
+	cout << "1 - Обучить нейронную сеть" << endl
+		<< "2 - Проверить" << endl
+		//<< "3 - Загрузить обученный персептрон" << endl
+		<< "0 - Выход" << endl;
+	int what_to_do;
+	Symbol s(5, "5");
+	Perceptron p(s, 6, 12);
+	while (1)
+	{
+		cin >> what_to_do;
+		switch (what_to_do)
+		{
+		case 1:
+		{
+			auto begin = chrono::steady_clock::now();  // Замеряем время обучения
+			//p.TeachPerceptron();
+			Network network;
+			vector<Symbol> symbol_storage = SetAllSymbols();
+			for (auto& symbol : symbol_storage)
+			{
+				network.CreatePerceptron(symbol, 6, 12);
+			}
+			cout << "Размер сети - " << network.GetSize() << endl;
+			network.TeachNetwork();
 
-	//		auto duration = chrono::duration_cast<chrono::milliseconds>(end - begin);
-	//		cout << endl << "\tОбучение прошло успешно!" << endl;
-	//		cout << "Длительность обучения - " << duration.count() << " миллисекунд" << endl;
-	//	}
-	//		break;
-	//	case 2:
-	//	{
-	//		cout << "\tПроверка работы нейросети" << endl << endl;
-	//		TestPerceptron(p);
-	//	}
-	//		break;
-	//	/*case 3:
-	//		p.DownloadPerceptron("Results/Save.txt");
-	//		break;*/
-	//	default:
-	//		return 0;
-	//	}
-	//}
+			auto end = chrono::steady_clock::now();
+
+
+
+			auto duration = chrono::duration_cast<chrono::milliseconds>(end - begin);
+			cout << endl << "\tОбучение прошло успешно!" << endl;
+			cout << "Длительность обучения - " << duration.count() << " миллисекунд" << endl;
+		}
+			break;
+		case 2:
+		{
+			cout << "\tПроверка работы нейросети" << endl << endl;
+			TestPerceptron(p);
+		}
+			break;
+		/*case 3:
+			p.DownloadPerceptron("Results/Save.txt");
+			break;*/
+		default:
+			return 0;
+		}
+	}
 
 
 	////vector<Symbol> symbols = SetAllSymbols();

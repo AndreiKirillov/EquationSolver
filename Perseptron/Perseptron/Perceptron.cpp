@@ -29,7 +29,7 @@ filepath(), size_x(x), size_y(y)
 	}
 }
 
-Perceptron::Perceptron(Symbol& symbol, int x, int y) :  identifying_symbol(symbol) ,sum(0), is_teached(false),
+Perceptron::Perceptron(const Symbol& symbol, int x, int y) :  identifying_symbol(symbol) ,sum(0), is_teached(false),
 filepath(), size_x(x), size_y(y)
 {
 	inputs.resize(size_y);                // Задаём размеры всем матрицам
@@ -157,7 +157,7 @@ void Perceptron::TeachPerceptron()   // Обучение персептрона
 
 void Perceptron::SavePerceptron()        // Сохраняем полученную в ходе обучения
 {                                    // матрицу весов в файл
-	ofstream outf("Symbols/5/Result/Save.txt");
+	ofstream outf(filepath.GetFolder() + identifying_symbol.value + "/Result/Save.txt");
 	if (outf.good())
 	{
 		for (auto& elem_i : weight_matrix)

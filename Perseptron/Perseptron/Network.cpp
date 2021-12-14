@@ -21,9 +21,9 @@ int Network::GetSize()
 
 void Network::CreatePerceptron(const Symbol& symbol, int x, int y)
 {
-	auto perceptron_ptr = make_shared<Perceptron>();
+	auto perceptron_ptr = make_shared<Perceptron>(symbol, x, y);
 
-	perceptron_ptr->SetParams(symbol, x, y);
+	//perceptron_ptr->SetParams(symbol, x, y);
 
 	perceptron_storage.push_back(perceptron_ptr);
 }
@@ -32,8 +32,13 @@ void Network::TeachNetwork()
 {
 	if (!IsEmpty())
 	{
+		int i = 0;
 		for (auto& perceptron : perceptron_storage)
+		{
 			perceptron->TeachPerceptron();
+			cout << "id " << i << " Обучение прошло" << endl;
+			++i;
+		}
 	}
 	else throw exception("Error! Network is empty!");
 }
