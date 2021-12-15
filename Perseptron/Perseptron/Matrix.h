@@ -15,5 +15,9 @@ public:
 	Matrix(int x, int y);
 
 	void SetMatrixFromFile(const string& filename);
+
+	vector<vector<int>> GetMatrix();
+	int GetSizeX();
+	int GetSizeY();
 };
 

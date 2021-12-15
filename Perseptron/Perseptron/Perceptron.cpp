@@ -77,6 +77,14 @@ void Perceptron::SetInputsFromFile(const string& filename)  // Заполнение матриц
 	}
 }
 
+void Perceptron::SetInputsFromMatrix(Matrix& matrix)
+{
+	if (size_x == matrix.GetSizeX() && size_y == matrix.GetSizeY())
+		inputs = matrix.GetMatrix();
+	else
+		throw exception("Error!Inputs size and matrix size not equal!");
+}
+
 void Perceptron::CalculateSignals()      // Подсчёт сигналов
 {                                        // сигнал = входной сигнал * вес связи
 	sum = 0;
@@ -153,6 +161,20 @@ void Perceptron::TeachPerceptron()   // Обучение персептрона
 	SavePerceptron();      // Сохраняем матрицу весов в файл
 
 	is_teached = true;
+}
+
+bool Perceptron::Test(Matrix& matrix)
+{
+	
+	SetInputsFromMatrix(matrix);
+
+	CalculateSignals();
+
+	//DisplayInputs();
+	if (GetResult())
+		return true;
+	else
+		return false;
 }
 
 void Perceptron::SavePerceptron()        // Сохраняем полученную в ходе обучения

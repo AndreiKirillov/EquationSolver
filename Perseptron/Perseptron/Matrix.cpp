@@ -32,3 +32,18 @@ void Matrix::SetMatrixFromFile(const string& filename)
 	else
 		throw exception("Error reading from file!");
 }
+
+vector<vector<int>> Matrix::GetMatrix()
+{
+	return matrix;
+}
+
+int Matrix::GetSizeX()
+{
+	return size_x;
+}
+
+int Matrix::GetSizeY()
+{
+	return size_y;
+}

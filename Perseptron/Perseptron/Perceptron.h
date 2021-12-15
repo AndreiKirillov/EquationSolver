@@ -2,6 +2,7 @@
 #include "Framework.h"
 #include "Filepath.h"
 #include "Symbol.h"
+#include "Matrix.h"
 
 
 using namespace std;
@@ -25,6 +26,7 @@ private:
 
 	int size_x;
 	int size_y;
+
 public:
 	Perceptron();
 	Perceptron(int x, int y);
@@ -32,12 +34,16 @@ public:
 
 	void SetParams(const Symbol& s, int x, int y);
 	void SetInputsFromFile(const string& filename);
+	void SetInputsFromMatrix(Matrix& matrix);
+
 	void CalculateSignals();
 	bool GetResult();
 	void DisplayInputs();
+
 	void TeachingStep(bool perceptron_deñision);
 	void TeachPerceptron();
-	void Test(string filename);
+	bool Test(Matrix& matrix);
+
 	void SavePerceptron();
 	
 	
