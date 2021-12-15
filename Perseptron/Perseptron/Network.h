@@ -20,7 +20,7 @@ public:
 
 	void CreatePerceptron(const Symbol& symbol, int x, int y);
 	void TeachNetwork();
-
+	void Test(vector<Matrix>& test_matrices);
 
 };
 

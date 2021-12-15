@@ -1,4 +1,5 @@
-﻿  Main.cpp
+﻿  Filepath.cpp
+  Main.cpp
   Matrix.cpp
   Network.cpp
   Perceptron.cpp

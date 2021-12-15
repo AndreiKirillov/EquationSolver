@@ -16,6 +16,8 @@ public:
 
 	void SetMatrixFromFile(const string& filename);
 
+	void Display();
+
 	vector<vector<int>> GetMatrix();
 	int GetSizeX();
 	int GetSizeY();

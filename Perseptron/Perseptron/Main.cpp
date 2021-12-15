@@ -31,6 +31,60 @@ vector<Symbol> SetAllSymbols()
 	return v;
 }
 
+vector<string> GetTestFiles()
+{
+	vector<string> test_files;
+	for (int i = 0; i <= 9; i++)
+	{
+		test_files.push_back("Examples/" + to_string(i) + ".txt");
+	}
+
+	test_files.push_back("Examples/-.txt");
+	test_files.push_back("Examples/+.txt");
+	test_files.push_back("Examples/divide.txt");
+	test_files.push_back("Examples/=.txt");
+	test_files.push_back("Examples/multiply.txt");
+	test_files.push_back("Examples/x.txt");
+
+	return test_files;
+}
+
+Network CreateNetwork(const vector<Symbol>& symbols_storage, int x, int y)
+{
+	Network network;
+	if (symbols_storage.size() > 0)
+	{
+		for (auto& symbol : symbols_storage)
+		{
+			network.CreatePerceptron(symbol, x, y);
+		}
+	}
+	else
+		cout << "Переданный массив символов пуст!" << endl;
+	return network;
+}
+
+void TestNetwork(Network& network, const vector<string>& test_files)
+{
+	if (network.IsEmpty())
+	{
+		cout << "Невозможно протестировать нейросеть, она не содержит персептронов!" << endl;
+		return;
+	}
+
+	vector<Matrix> test_matrices;
+	
+	for_each(test_files.cbegin(), test_files.cend(), [&](const string filename)
+		{
+			Matrix matrix(6,12);
+			matrix.SetMatrixFromFile(filename);
+			test_matrices.push_back(matrix);
+		});
+
+	network.Test(test_matrices);
+}
+
+
 void TestPerceptron(Perceptron& p)     // Функция тестирования персептрона
 {
 	for (int i = 0; i <= 10; i++)
@@ -74,6 +128,10 @@ int main()
 			}
 			cout << "Размер сети - " << network.GetSize() << endl;
 			network.TeachNetwork();
+
+			vector<string> test_files = GetTestFiles();
+
+			TestNetwork(network, test_files);
 
 			auto end = chrono::steady_clock::now();
 

@@ -33,6 +33,19 @@ void Matrix::SetMatrixFromFile(const string& filename)
 		throw exception("Error reading from file!");
 }
 
+void Matrix::Display()
+{
+	for (auto& elem_i : matrix)        //### - 5
+	{                                  //#..
+		for (auto& elem_j : elem_i)    //###
+			if (elem_j)                //..#
+				cout << "#";           //###
+			else
+				cout << ".";
+		cout << endl;
+	}
+}
+
 vector<vector<int>> Matrix::GetMatrix()
 {
 	return matrix;

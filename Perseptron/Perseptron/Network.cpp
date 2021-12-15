@@ -43,6 +43,23 @@ void Network::TeachNetwork()
 	else throw exception("Error! Network is empty!");
 }
 
+void Network::Test(vector<Matrix>& test_matrices)
+{
+	for (auto& perceptron : perceptron_storage)
+	{
+		for (auto& matrix : test_matrices)
+		{
+			matrix.Display();
+			if (perceptron->Test(matrix))
+			{
+				cout << "TRUE" << endl << endl;
+			}
+			else
+				cout << "FALSE" << endl << endl;
+		}
+	}
+}
+
 
 
 

@@ -163,14 +163,12 @@ void Perceptron::TeachPerceptron()   // Обучение персептрона
 	is_teached = true;
 }
 
-bool Perceptron::Test(Matrix& matrix)
-{
-	
-	SetInputsFromMatrix(matrix);
+bool Perceptron::Test(Matrix& matrix)         // Персептрон получает матрицу на вход
+{                                             // Распознаёт объект и возвращает результат сравнения с обученными данными
+	SetInputsFromMatrix(matrix);                  
 
 	CalculateSignals();
 
-	//DisplayInputs();
 	if (GetResult())
 		return true;
 	else

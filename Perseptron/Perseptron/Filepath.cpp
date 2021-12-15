@@ -172,3 +172,4 @@ std::vector<std::string> Filepath::GetBadFiles()
 {
 	return bad_files;
 }
+
