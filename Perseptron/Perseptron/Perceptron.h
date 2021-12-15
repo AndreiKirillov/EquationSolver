@@ -37,6 +37,7 @@ public:
 	void DisplayInputs();
 	void TeachingStep(bool perceptron_deñision);
 	void TeachPerceptron();
+	void Test(string filename);
 	void SavePerceptron();
 	
 	

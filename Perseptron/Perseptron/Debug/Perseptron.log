@@ -1,7 +1,6 @@
-﻿  Filepath.cpp
-  Main.cpp
+﻿  Main.cpp
+  Matrix.cpp
   Network.cpp
   Perceptron.cpp
-  Symbol.cpp
   Создание кода...
   Perseptron.vcxproj -> C:\repository\EquationSolver\Perseptron\Debug\Perceptron.exe
