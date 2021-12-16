@@ -1,6 +1,6 @@
 #include "Equation.h"
 
-Equation::Equation() : equation_matrix(0, (vector<int>(0))), numeric_parts(0), width_between_symbols(0),
+Equation::Equation() : equation_matrix(0, (vector<int>(0))), numeric_parts(0, Matrix(0,0)), width_between_symbols(0),
 size_x(0), size_y(0), is_empty(true), one_part_length(0)
 {
 }
@@ -95,7 +95,7 @@ void Equation::DivideIntoNumericParts()
 				++k;
 			}
 			equation_parts[current_part].SetLine(part_vector, i);
-			current_x += (k + width_between_symbols + 1);
+			current_x += (k + width_between_symbols);
 			++current_part;
 		}
 	}
