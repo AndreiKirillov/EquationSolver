@@ -15,6 +15,7 @@ public:
 	Matrix(int x, int y);
 
 	void SetMatrixFromFile(const string& filename);
+	void SetLine(const vector<int>& line, int y_coord);
 
 	void Display();
 

@@ -33,6 +33,21 @@ void Matrix::SetMatrixFromFile(const string& filename)
 		throw exception("Error reading from file!");
 }
 
+void Matrix::SetLine(const vector<int>& line, int y_coord)
+{
+	if (y_coord < size_y)
+	{
+		if (matrix[y_coord].size() == line.size())
+		{
+			matrix[y_coord] = line;
+		}
+		else
+			throw exception("Error! Vector sizes are not equal!");
+	}
+	else
+		throw exception("Error! Y_COORD out of range!");
+}
+
 void Matrix::Display()
 {
 	for (auto& elem_i : matrix)        //### - 5
