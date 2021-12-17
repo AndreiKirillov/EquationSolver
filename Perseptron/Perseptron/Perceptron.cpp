@@ -85,6 +85,11 @@ void Perceptron::SetInputsFromMatrix(Matrix& matrix)
 		throw exception("Error!Inputs size and matrix size not equal!");
 }
 
+Symbol Perceptron::GetTeachedSymbol()
+{
+	return identifying_symbol;
+}
+
 void Perceptron::CalculateSignals()      // Подсчёт сигналов
 {                                        // сигнал = входной сигнал * вес связи
 	sum = 0;

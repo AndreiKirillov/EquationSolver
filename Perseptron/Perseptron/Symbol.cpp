@@ -12,6 +12,11 @@ Symbol::Symbol(const Symbol& symbol) : id(symbol.id), value(symbol.value), name(
 {
 }
 
+string Symbol::GetValue()
+{
+	return value;
+}
+
 bool Symbol::operator()(const Symbol& s1, const Symbol& s2)
 {
 	return s1.id < s2.id;

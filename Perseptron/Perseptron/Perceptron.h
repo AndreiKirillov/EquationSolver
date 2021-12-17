@@ -36,6 +36,8 @@ public:
 	void SetInputsFromFile(const string& filename);
 	void SetInputsFromMatrix(Matrix& matrix);
 
+	Symbol GetTeachedSymbol();
+
 	void CalculateSignals();
 	bool GetResult();
 	void DisplayInputs();

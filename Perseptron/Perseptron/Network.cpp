@@ -60,19 +60,46 @@ void Network::Test(vector<Matrix>& test_matrices)
 	}
 }
 
-string Network::RecognizeMatrix(const Matrix& matrix)
+string Network::RecognizeMatrix(Matrix& matrix)
 {
 	if (IsEmpty())
 		return "";
 
-	return string();
+	for (auto& perceptron : perceptron_storage)
+	{
+		if (perceptron->Test(matrix))
+		{
+			Symbol recognized_symbol = perceptron->GetTeachedSymbol();
+			return recognized_symbol.GetValue();
+		}
+	}
+
+	return string("");
 }
 
-EquationMaths Network::RecognizeEquation(const EquationMatrix& equation)
+EquationMaths Network::RecognizeEquation(EquationMatrix& equation)
 {
+	if(equation.IsEmpty())
+		return EquationMaths();
 
+	string mathemathics_equation = "";
+	vector<Matrix> equation_parts = equation.GetNumericParts();
 
-	return EquationMaths();
+	for (auto& equation_elem : equation_parts)
+	{
+		string ch = RecognizeMatrix(equation_elem);
+		if (ch != "")
+		{
+			mathemathics_equation.append(ch);
+		}
+		else
+		{
+			cout << "Не удалось распознать уравнение!" << endl;
+			return EquationMaths();
+		}
+	}
+
+	return mathemathics_equation;
 }
 
 

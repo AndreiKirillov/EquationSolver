@@ -24,8 +24,8 @@ public:
 	void TeachNetwork();
 	void Test(vector<Matrix>& test_matrices);
 
-	string RecognizeMatrix(const Matrix& matrix);
+	string RecognizeMatrix(Matrix& matrix);
 
-	EquationMaths RecognizeEquation(const EquationMatrix& equation);
+	EquationMaths RecognizeEquation(EquationMatrix& equation);
 };
 
