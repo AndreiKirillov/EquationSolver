@@ -4,7 +4,7 @@
 #include "Perceptron.h"
 #include "Network.h"
 #include "Symbol.h"
-#include "Equation.h"
+#include "EquationMatrix.h"
 
 using namespace std;
 
@@ -146,13 +146,12 @@ int main()
 		case 2:
 		{
 			cout << "\tПроверка работы нейросети" << endl << endl;
-			Equation equation;
+			EquationMatrix equation;
 			//equation.SetSizeX(6);
 			equation.SetSizeY(12);
 			equation.SetOnePartLength(6);
 			equation.SetWidthBetweenSymbols(3);
 			equation.SetEquationFromFile("Equations/15x+93=248.txt");
-			equation.DivideIntoNumericParts();
 			vector<Matrix> v = equation.GetNumericParts();
 			for (auto& elem : v)
 				elem.Display();

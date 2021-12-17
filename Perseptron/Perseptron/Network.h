@@ -22,5 +22,6 @@ public:
 	void TeachNetwork();
 	void Test(vector<Matrix>& test_matrices);
 
+
 };
 

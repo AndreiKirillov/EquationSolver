@@ -1,36 +1,36 @@
-#include "Equation.h"
+#include "EquationMatrix.h"
 
-Equation::Equation() : equation_matrix(0, (vector<int>(0))), numeric_parts(0, Matrix(0,0)), width_between_symbols(0),
-size_x(0), size_y(0), is_empty(true), one_part_length(0)
+EquationMatrix::EquationMatrix() : equation_matrix(0, (vector<int>(0))), numeric_parts(0, Matrix(0,0)), width_between_symbols(0),
+size_x(0), size_y(0), is_empty(true), is_divided_parts(false), one_part_length(0)
 {
 }
 
-void Equation::SetSizeX(int x)
+void EquationMatrix::SetSizeX(int x)
 {
 	size_x = x;
 }
 
-void Equation::SetSizeY(int y)
+void EquationMatrix::SetSizeY(int y)
 {
 	size_y = y;
 }
 
-void Equation::SetOnePartLength(int length)
+void EquationMatrix::SetOnePartLength(int length)
 {
 	one_part_length = length;
 }
 
-bool Equation::IsEmpty()
+bool EquationMatrix::IsEmpty()
 {
 	return is_empty;
 }
 
-void Equation::SetWidthBetweenSymbols(int width)
+void EquationMatrix::SetWidthBetweenSymbols(int width)
 {
 	width_between_symbols = width;
 }
 
-void Equation::SetEquationFromFile(string filename)
+void EquationMatrix::SetEquationFromFile(string filename)
 {
 	ifstream inf(filename);
 	int matrix_length = 0;
@@ -49,7 +49,7 @@ void Equation::SetEquationFromFile(string filename)
 	is_empty = false;
 }
 
-int Equation::CountParts()
+int EquationMatrix::CountParts()
 {
 	if (is_empty)
 	{
@@ -67,7 +67,7 @@ int Equation::CountParts()
 	return count_parts;
 }
 
-void Equation::DivideIntoNumericParts()
+void EquationMatrix::DivideIntoNumericParts()
 {
 	if (is_empty)
 	{
@@ -100,10 +100,15 @@ void Equation::DivideIntoNumericParts()
 		}
 	}
 
+	is_divided_parts = true;
 	numeric_parts = equation_parts;
 }
 
-vector<Matrix> Equation::GetNumericParts()
+vector<Matrix> EquationMatrix::GetNumericParts()
 {
+	if (!is_divided_parts)
+	{
+		DivideIntoNumericParts();
+	}
 	return numeric_parts;
 }

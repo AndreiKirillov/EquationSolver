@@ -4,7 +4,7 @@
 
 using namespace std;
 
-class Equation
+class EquationMatrix
 {
 private:
 	vector <vector<int>> equation_matrix;
@@ -16,11 +16,13 @@ private:
 	int width_between_symbols;
 
 	bool is_empty;
+	bool is_divided_parts;
 
 
 	int CountParts();
+	void DivideIntoNumericParts();
 public:
-	Equation();
+	EquationMatrix();
 
 	void SetSizeX(int x);
 	void SetSizeY(int y);
@@ -30,8 +32,6 @@ public:
 	void SetWidthBetweenSymbols(int width);
 
 	void SetEquationFromFile(string filename);
-
-	void DivideIntoNumericParts();
 
 	vector<Matrix> GetNumericParts();
 };

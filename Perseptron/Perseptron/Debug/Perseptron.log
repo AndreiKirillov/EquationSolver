@@ -1,2 +1,5 @@
-﻿  Equation.cpp
+﻿  EquationMatrix.cpp
+  Main.cpp
+  Network.cpp
+  Создание кода...
   Perseptron.vcxproj -> C:\repository\EquationSolver\Perseptron\Debug\Perceptron.exe
