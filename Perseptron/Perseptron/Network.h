@@ -2,6 +2,8 @@
 #include "Framework.h"
 #include "Perceptron.h"
 #include "Symbol.h"
+#include "EquationMatrix.h"
+#include "EquationMaths.h"
 
 
 using namespace std;
@@ -22,6 +24,8 @@ public:
 	void TeachNetwork();
 	void Test(vector<Matrix>& test_matrices);
 
+	string RecognizeMatrix(const Matrix& matrix);
 
+	EquationMaths RecognizeEquation(const EquationMatrix& equation);
 };
 

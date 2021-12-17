@@ -1,14 +1,14 @@
 #include "Symbol.h"
 
-Symbol::Symbol() : id(0), value("")
+Symbol::Symbol() : id(0), value(""), name("")
 {
 }
 
-Symbol::Symbol(int id, string value) : id(id), value(value)
+Symbol::Symbol(int id, string newname, string newvalue) : id(id),name(newname), value(newvalue)
 {
 }
 
-Symbol::Symbol(const Symbol& symbol) : id(symbol.id), value(symbol.value)
+Symbol::Symbol(const Symbol& symbol) : id(symbol.id), value(symbol.value), name(symbol.name)
 {
 }
 

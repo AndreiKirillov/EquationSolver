@@ -9,10 +9,11 @@ private:
 	
 public:
 	int id;
+	string name;
 	string value;
 
 	Symbol();
-	Symbol(int id, string value);
+	Symbol(int id, string newname, string newvalue);
 	Symbol(const Symbol& symbol);
 
 	friend bool operator> (const Symbol& s1, const Symbol& s2);

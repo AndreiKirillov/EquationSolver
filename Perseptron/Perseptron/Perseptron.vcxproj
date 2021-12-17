@@ -149,6 +149,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="EquationMaths.cpp" />
     <ClCompile Include="EquationMatrix.cpp" />
     <ClCompile Include="Filepath.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -158,6 +159,7 @@
     <ClCompile Include="Symbol.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="EquationMaths.h" />
     <ClInclude Include="EquationMatrix.h" />
     <ClInclude Include="Filepath.h" />
     <ClInclude Include="Framework.h" />

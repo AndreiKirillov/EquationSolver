@@ -12,22 +12,22 @@ vector<Symbol> SetAllSymbols()
 {
 	vector<Symbol> v;
 	
-	v.push_back(Symbol(0, "0"));
-	v.push_back(Symbol(1, "1"));
-	v.push_back(Symbol(2, "2"));
-	v.push_back(Symbol(3, "3"));
-	v.push_back(Symbol(4, "4"));
-	v.push_back(Symbol(5, "5"));
-	v.push_back(Symbol(6, "6"));
-	v.push_back(Symbol(7, "7"));
-	v.push_back(Symbol(8, "8"));
-	v.push_back(Symbol(9, "9"));
-	v.push_back(Symbol(10, "x"));
-	v.push_back(Symbol(11, "plus"));
-	v.push_back(Symbol(12, "minus"));
-	v.push_back(Symbol(13, "multiply"));
-	v.push_back(Symbol(14, "divide"));
-	v.push_back(Symbol(15, "equal"));
+	v.push_back(Symbol(0, "0", "0"));
+	v.push_back(Symbol(1, "1", "1"));
+	v.push_back(Symbol(2, "2", "2"));
+	v.push_back(Symbol(3, "3", "3"));
+	v.push_back(Symbol(4, "4", "4"));
+	v.push_back(Symbol(5, "5", "5"));
+	v.push_back(Symbol(6, "6", "6"));
+	v.push_back(Symbol(7, "7", "7"));
+	v.push_back(Symbol(8, "8", "8"));
+	v.push_back(Symbol(9, "9", "9"));
+	v.push_back(Symbol(10, "x", "x"));
+	v.push_back(Symbol(11, "plus", "+"));
+	v.push_back(Symbol(12, "minus", "-"));
+	v.push_back(Symbol(13, "multiply", "*"));
+	v.push_back(Symbol(14, "divide", "/"));
+	v.push_back(Symbol(15, "equal", "="));
 
 	return v;
 }
@@ -110,8 +110,7 @@ int main()
 		//<< "3 - Загрузить обученный персептрон" << endl
 		<< "0 - Выход" << endl;
 	int what_to_do;
-	Symbol s(5, "5");
-	Perceptron p(s, 6, 12);
+	
 	while (1)
 	{
 		cin >> what_to_do;

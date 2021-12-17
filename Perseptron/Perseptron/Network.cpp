@@ -60,6 +60,21 @@ void Network::Test(vector<Matrix>& test_matrices)
 	}
 }
 
+string Network::RecognizeMatrix(const Matrix& matrix)
+{
+	if (IsEmpty())
+		return "";
+
+	return string();
+}
+
+EquationMaths Network::RecognizeEquation(const EquationMatrix& equation)
+{
+
+
+	return EquationMaths();
+}
+
 
 
 
