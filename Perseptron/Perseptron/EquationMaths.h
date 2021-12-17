@@ -12,5 +12,7 @@ public:
 	EquationMaths();
 	EquationMaths(string& equation);
 
+	string GetEquation();
+
 };
 

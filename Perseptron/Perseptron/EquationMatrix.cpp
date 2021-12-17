@@ -63,7 +63,7 @@ int EquationMatrix::CountParts()
 		int total_length = equation_matrix[0].size();
 		count_parts = total_length / (one_part_length + width_between_symbols);
 	}
-
+	++count_parts;//////////////////////////////  потенциальные ошибки
 	return count_parts;
 }
 

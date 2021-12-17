@@ -19,10 +19,11 @@ private:
 	bool is_divided_parts;
 
 
-	int CountParts();
+	//int CountParts();
 	void DivideIntoNumericParts();
 public:
 	EquationMatrix();
+	int CountParts();
 
 	void SetSizeX(int x);
 	void SetSizeY(int y);

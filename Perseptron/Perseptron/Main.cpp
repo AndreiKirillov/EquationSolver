@@ -110,6 +110,7 @@ int main()
 		//<< "3 - Загрузить обученный персептрон" << endl
 		<< "0 - Выход" << endl;
 	int what_to_do;
+	Network network;
 	
 	while (1)
 	{
@@ -119,8 +120,7 @@ int main()
 		case 1:
 		{
 			auto begin = chrono::steady_clock::now();  // Замеряем время обучения
-			//p.TeachPerceptron();
-			Network network;
+			//Network network;
 			vector<Symbol> symbol_storage = SetAllSymbols();
 			for (auto& symbol : symbol_storage)
 			{
@@ -131,7 +131,7 @@ int main()
 
 			vector<string> test_files = GetTestFiles();
 
-			TestNetwork(network, test_files);
+			//TestNetwork(network, test_files);
 
 			auto end = chrono::steady_clock::now();
 
@@ -152,8 +152,10 @@ int main()
 			equation.SetWidthBetweenSymbols(3);
 			equation.SetEquationFromFile("Equations/15x+93=248.txt");
 			vector<Matrix> v = equation.GetNumericParts();
-			for (auto& elem : v)
-				elem.Display();
+			EquationMaths math = network.RecognizeEquation(equation);
+			cout << math.GetEquation() << endl;
+			/*for (auto& elem : v)
+				elem.Display();*/
 		}
 			break;
 		/*case 3:
